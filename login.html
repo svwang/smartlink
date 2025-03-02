@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SmartLink - Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-light bg-opacity-75">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <!-- Bagian Kiri -->
+                            <div class="col-lg-6 d-none d-lg-flex bg-primary align-items-center justify-content-center flex-column text-center">
+                                <img src="img/logo/welcome.png" alt="Gambar SmartLink" class="img-fluid" style="max-width: 80%;">
+                                <h1 class="text-white mt-3">Selamat Datang</h1>
+                                <p class="text-white">Hubungkan perangkat pintar Anda ke sistem kami!</p>
+                            </div>
+                        
+                            <!-- Bagian Kanan -->
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">SmartLink Login</h1>
+                                    </div>
+                                    <form class="user">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                                aria-describedby="emailHelp" placeholder="Masukkan Email..." required>
+                                                <small id="emailError" class="text-danger d-none">Email wajib diisi!</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                                                placeholder="Password" required>
+                                                <small id="passwordError" class="text-danger d-none">Password wajib diisi!</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Ingat password</label>
+                                            </div>
+                                            <div class="text-center">
+                                                <a class="small" href="forgot-password.html">Lupa password?</a>
+                                            </div>
+                                        </div>
+                                        <a href="#" id="btnLogin" class="btn btn-primary btn-user btn-block">Masuk</a>
+                                        <hr>
+                                        
+                                        <p class="small text-center">Belum ada akun?</p>
+                                        <a href="#" id="btnGoogleLogin" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Masuk dengan Google
+                                        </a>
+                                        
+                                        <p class="small text-center mt-2">Atau</p>
+                                        
+                                        <div class="text-center">
+                                            <a class="small btn btn-secondary btn-user btn-block" href="register.html">Buat Akun</a>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- firebase setup -->
+    <script type="module">
+        // Import Firebase SDK
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+
+        // Konfigurasi Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyALFEuoRLHCysli6QyB4lSS0qBZf6tKg3Y",
+            authDomain: "aplikasi-iot-c68b3.firebaseapp.com",
+            projectId: "aplikasi-iot-c68b3",
+            storageBucket: "aplikasi-iot-c68b3.appspot.com",
+            messagingSenderId: "1009986462340",
+            appId: "1:1009986462340:web:258adb8357c62d9eb7d8d1",
+            measurementId: "G-PD16QKDNNX"
+        };
+
+        // Inisialisasi Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+        const db = getFirestore();
+        const provider = new GoogleAuthProvider();
+
+        // Event listener untuk tombol login
+        document.getElementById("btnGoogleLogin").addEventListener("click", async function () {
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+                const uid = user.uid;
+
+                // Simpan data user ke Firestore
+                const userRef = doc(db, "users", uid);
+                await setDoc(userRef, {
+                    uid: uid,
+                    name: user.displayName,
+                    email: user.email,
+                    photoURL: user.photoURL,
+                    createdAt: new Date().toISOString()
+                }, { merge: true }); // Gunakan merge agar tidak menimpa data lama
+
+                console.log("Login berhasil dan data user tersimpan!");
+                localStorage.setItem("user", JSON.stringify(user));
+                window.location.href = "index.html";
+            } catch (error) {
+                console.error("Error saat login:", error.message);
+            }
+        });
+
+
+
+        document.getElementById("btnLogin").addEventListener("click", function (event) {
+                event.preventDefault(); // Mencegah redirect jika form tidak valid
+
+                const email = document.getElementById("exampleInputEmail").value.trim();
+                const password = document.getElementById("exampleInputPassword").value.trim();
+                const emailError = document.getElementById("emailError");
+                const passwordError = document.getElementById("passwordError");
+
+                let isValid = true;
+
+                if (email === "") {
+                    emailError.classList.remove("d-none");
+                    isValid = false;
+                } else {
+                    emailError.classList.add("d-none");
+                }
+
+                if (password === "") {
+                    passwordError.classList.remove("d-none");
+                    isValid = false;
+                } else {
+                    passwordError.classList.add("d-none");
+                }
+
+                if (isValid) {
+                    document.getElementById("loginForm").submit(); // Kirim form jika valid
+                }
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                    const emailInput = document.getElementById("exampleInputEmail");
+                    const passwordInput = document.getElementById("exampleInputPassword");
+                    const rememberMe = document.getElementById("customCheck");
+
+                    // Cek apakah ada data tersimpan di LocalStorage
+                    if (localStorage.getItem("rememberEmail")) {
+                        emailInput.value = localStorage.getItem("rememberEmail");
+                        passwordInput.value = localStorage.getItem("rememberPassword");
+                        rememberMe.checked = true;
+                    }
+
+                    document.getElementById("btnLogin").addEventListener("click", function (event) {
+                        event.preventDefault(); // Mencegah redirect langsung
+
+                        if (rememberMe.checked) {
+                            localStorage.setItem("rememberEmail", emailInput.value);
+                            localStorage.setItem("rememberPassword", passwordInput.value);
+                        } else {
+                            localStorage.removeItem("rememberEmail");
+                            localStorage.removeItem("rememberPassword");
+                        }
+
+                        document.getElementById("loginForm").submit(); // Kirim form jika valid
+                    });
+                });
+    </script>
+
+
+</body>
+
+</html>
