@@ -10,9 +10,15 @@
     <meta name="author" content="">
 
     <title>SmartLink - Dashboard</title>
+    <link rel="icon" href="img/icon/monitoring_smart_home_humidity_thermal_electricity_home_icon_213873.ico" type="image/x-icon">
+
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Tambahkan ini di dalam <head> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -20,19 +26,59 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/mycss.css">
+
     <style>
-    .custom-svg {
-        fill: blue;  /* Mengubah warna dalam */
-        stroke: white; /* Mengubah garis tepi */
-    }
-    .btn-close {
-        display: inline-block !important;
-    }
 
-
-
+        .container {
+            position: relative;
+            width: 20px;
+            height: 40%;
+        }
+    
+        .tanaman {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            transition: filter 1s;
+        }
+        
+        .tanaman_tidak_aktif {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            
+        }
+    
+        .air {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: blue;
+            border-radius: 50%;
+            opacity: 0;
+            animation: airJatuh 5s infinite linear;
+        }
+    
+        @keyframes airJatuh {
+            0% {
+                transform: translateY(-50px);
+                opacity: 1;
+            }
+    
+            100% {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+        }
     </style>
-
+    
 </head>
 
 <body id="page-top">
@@ -44,7 +90,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
                 <div class="sidebar-brand-icon bg-white rounded pt-1 pb-1">
                     <img class="" src="img/smarthome.png" alt="" width="50%">
                 </div>
@@ -69,7 +115,7 @@
                 Menu
             </div>
 
-            
+
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
@@ -95,16 +141,22 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
-                    aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Pengaturan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
-                        <a class="collapse-item" href="cards.html">Cards</a>
+                        <h6 class="collapse-header">Akun:</h6>
+                        <a class="collapse-item" href="#">Akun</a>
+                        <a class="collapse-item" href="#">Keamanan dan Izin</a>
+                        <h6 class="collapse-header">Dukungan & Tentang:</h6>
+                        <a class="collapse-item" href="#">Laporkan Masalah</a>
+                        <a class="collapse-item" href="#">Ketentuan dan Kebijakan</a>
+                        <h6 class="collapse-header">Login:</h6>
+                        <a class="collapse-item" href="#">Beralih Akun</a>
+                        <a class="collapse-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
                     </div>
                 </div>
             </li>
@@ -173,21 +225,20 @@
                                     </div>
                                 </form>
                             </div>
-                        </li>
-
+                        </li>                        
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
+                                <span class="badge badge-danger badge-counter">1+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Alerts Center
+                                    Notifikasi
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
@@ -196,8 +247,8 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                        <div class="small text-gray-500">Maret 12, 2025</div>
+                                        <span class="font-weight-bold">12 Menit kedepan Tanaman harus di siram</span>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
@@ -207,19 +258,8 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
+                                        <div class="small text-gray-500">Mare 7, 2025</div>
+                                        Lampu sudah menyala lebih dari 18 jam
                                     </div>
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
@@ -232,62 +272,34 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
+                                <span class="badge badge-danger badge-counter">2</span>
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
-                                    Message Center
+                                    Pesan
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/smarthome.png" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
+                                        <div class="text-truncate">SmartHome Berjalan sangat baik</div>
                                     </div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
+                                        <div class="text-truncate">Team Support</div>
                                         <div class="small text-gray-500">Jae Chun · 1d</div>
                                     </div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
+
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
                         </li>
@@ -296,8 +308,8 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span id="username" class="mr-2 d-none d-lg-inline text-gray-600 small">Pengguna</span>
                                 <img id="userProfile" class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
@@ -312,10 +324,6 @@
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
@@ -336,111 +344,213 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Beranda</h1>
+                        
+                        
                         <!-- Example single danger button -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 <i class="fas fa-plus"></i>
-                                 Perangkat
+                                Perangkat
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Input manual</a></li>
-                                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Barcode</a></li>                        
+                                <li class="pointer"><a class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop2" class="pointer">Input manual</a></li>
+                                <li class="pointer"><a class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop" >Barcode</a></li>
+                                <li><a class="dropdown-item" data-bs-toggle="modal"
+                                        data-bs-target="#infoModal"><p class="panduan pointer">Panduan koneksi wifi</p></a></li>
                             </ul>
                         </div>
-                        
+
+                                        
+
                         <!-- Modal Barcode-->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Silahkan Scan barcode yang tertera diperangkat</h5>
+                                        <h5 class="modal-title" id="staticBackdropLabel">Silahkan Scan barcode yang
+                                            tertera diperangkat</h5>
                                     </div>
                                     <div class="modal-body">
-                                        <select id="cameraSelect"></select>
-                                        <video id="scanner" autoplay playsinline></video>
-                                        <button onclick="startCamera()">Mulai Kamera</button>
-                                        <button onclick="stopCamera()">Stop Kamera</button>
+                                        <select id="cameraSelect" class="mb-3"></select>
+                                        <video id="scanner" autoplay playsinline width="100%"></video>
+                                        <p id="result" class="mt-3 fw-bold text-center"></p>
                                     </div>
                                     <div class="modal-footer">
-                                        
-                                        <button type="button" class="btn btn-danger" id="stopCamera">Stop Kamera</button>
-                                        <button type="button" class="btn btn-info" data-bs-dismiss="modal">Tutup</button>
+                                        <button type="button" class="btn btn-info" id="restartScan">Scan Ulang</button>
+                                        <button type="button" class="btn btn-danger"
+                                            data-bs-dismiss="modal">Tutup</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Modal Input manual key-->
-                        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <!-- Modal SSID & Password -->
+                        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="infoModalLabel">Panduan Koneksi WiFi Smartlink</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-center fw-bold">Hubungkan terlebih dahulu perangkat Smartlink anda ke WiFi sekitar</p>
+                        
+                                        <!-- Informasi SSID & Password -->
+                                        <div class="alert alert-info text-center">
+                                            <p><strong>SSID:</strong> <span id="ssidDisplay"></span></p>
+                                            <p><strong>Password:</strong> <span id="passwordDisplay"></span></p>
+                                            <p><strong>Jika informasi ssid dan password tidak muncul, silahkan lihat informasi dibawah perangkat anda</strong> <span id="passwordDisplay"></span></p>
+                                        </div>
+                        
+                                        <hr>
+                        
+                                        <!-- Langkah 1 -->
+                                        <div class="text-center">
+                                            <h5><b>Langkah 1</b></h5>
+                                            <p>Pilih SSID perangkat Smartlink didaftar WiFi perangkat Anda.</p>
+                                            <img src="img/tutorial/1.jpeg" alt="Langkah 1" class="img-fluid rounded shadow-sm" width="40%">
+                                        </div>
+                        
+                                        <hr>
+                        
+                                        <!-- Langkah 2 -->
+                                        <div class="text-center">
+                                            <h5><b>Langkah 2</b></h5>
+                                            <p>Masukkan password yang sesuai untuk terhubung.</p>
+                                            <img src="img/tutorial/2.jpeg" alt="Langkah 2" class="img-fluid rounded shadow-sm" width="40%">
+                                        </div>
+                        
+                                        <hr>
+                        
+                                        <p class="text-center">Tunggu hingga perangkat Anda terhubung ke WiFi Smartlink.</p>
+                        
+                                        <hr>
+                        
+                                        <!-- Langkah 3 -->
+                                        <div class="text-center">
+                                            <h5><b>Langkah 3</b></h5>
+                                            <p>Setelah berhasil terhubung silahkan klik link atau tekan tombol setting perangkat</p>
+                                            <p>
+                                                <a href="http://192.168.4.1/" target="_blank">
+                                                    Masuk ke Link
+                                                </a>
+                                            </p>
+                                            <a href="http://192.168.4.1/" target="_blank">
+                                                <button class="btn btn-warning">Setting Perangkat</button>
+                                            </a>
+
+                                            <p>Jika belum berhasil masuk, pastikan device anda terhubung ke jaringan Perangkat SmartLink</p>
+                                            
+                                        </div>
+                                        <div class="text-center mt-5">
+                                            <p>Masukkan SSID dan Password dari Wifi anda</p>
+                                            <img src="img/tutorial/3.jpeg" alt="Langkah 3" class="img-fluid rounded shadow-sm" width="40%">
+                                        </div>
+                                        
+                                    </div>
+                        
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal" id="btnLanjut">Lanjut</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal OTP -->
+                        <div id="otpModal" class="modal fade" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"
+                            data-bs-keyboard="false">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Input Manual</h5>
+                                        <h5 class="modal-title">Verifikasi OTP</h5>
+
                                     </div>
                                     <div class="modal-body">
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon1">@</span>
-                                            <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                                                aria-describedby="basic-addon1">
-                                        </div>
-                                        
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-                                                aria-describedby="basic-addon2">
-                                            <span class="input-group-text" id="basic-addon2">@example.com</span>
-                                        </div>
-                                        
-                                        <label for="basic-url" class="form-label">Your vanity URL</label>
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
-                                            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-                                        </div>
-                                        
-                                        <div class="input-group mb-3">
-                                            <span class="input-group-text">$</span>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                            <span class="input-group-text">.00</span>
-                                        </div>
-                                        
-                                        <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Username" aria-label="Username">
-                                            <span class="input-group-text">@</span>
-                                            <input type="text" class="form-control" placeholder="Server" aria-label="Server">
-                                        </div>
-                                        
-                                        <div class="input-group">
-                                            <span class="input-group-text">With textarea</span>
-                                            <textarea class="form-control" aria-label="With textarea"></textarea>
-                                        </div>
+                                        <p>Kode OTP telah dikirim ke email Anda. Masukkan kode OTP untuk melanjutkan.
+                                        </p>
+                                        <p id="timerText" class="text-danger">Sisa waktu: 60 detik</p>
+                                        <input type="text" id="otpInput" class="form-control"
+                                            placeholder="Masukkan OTP">
+                                        <p id="otpExpiredMessage" class="text-danger" style="display: none;">Kode OTP
+                                            sudah kadaluarsa!</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tutup</button>
-                                        <button type="button" class="btn btn-info">kirim</button>
+                                        <button type="button" class="btn btn-danger"
+                                            data-bs-dismiss="modal">Batalkan</button>
+                                        <button type="button" class="btn btn-primary" id="otpButton">Verifikasi</button>
+
+                                        <button type="button" class="btn btn-secondary" onclick="resendOTP()"
+                                            id="resendButton" style="display: none;">Kirim Ulang OTP</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="input-group mb-3">
+                                                                    <input type="text" class="form-control" placeholder="Recipient's username"
+                                                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                                                    <span class="input-group-text" id="basic-addon2">@example.com</span>
+                                                                </div> -->
+                        <!-- Modal Input manual key-->
+                        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered"> <!-- Tambahkan modal-dialog-centered -->
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="input-group mb-3 mt-3">
+                                            <p>Silahkan masukan Produk key yang tertera di perangkat SmartLink anda!</p>
+                                        </div>
+
+                                        <div class="input-group mb-3">
+                                            <span class="input-group-text" id="basic-addon1">key</span>
+                                            <input type="text" class="form-control" id="inputProdukKey"
+                                                placeholder="Produk_key" aria-label="Produk_key"
+                                                aria-describedby="basic-addon1">
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger"
+                                            data-bs-dismiss="modal">Tutup</button>
+                                        <button type="button" class="btn btn-info" id="btnKirimProdukKey">Kirim</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- <button id="tombolTambah">Tambah data test</button> -->
 
                     <!-- Content Row -->
-                    <div class="row">
-                        
+                    
+                    
+                    <div class="row" id="perangkatContainer">
+
                         <!-- disini akan mucnul perangkat yang sudah ditambahkan -->
+
+                        <!-- /.container-fluid -->
+                        <div id="loading-spinner" class="loading-container" style="display: none;">
+                            <div class="loading-spinner"></div>
+                        </div>
+
                     </div>
 
                 </div>
-                <!-- /.container-fluid -->
+                
+
 
             </div>
             <!-- End of Main Content -->
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
+                <div class=" my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; SmartLink 2021</span>
+                        <span>Copyright &copy; SmartLink 2025</span>
                     </div>
                 </div>
             </footer>
@@ -463,45 +573,53 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Logout?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Pilih "Logout" untuk keluar dari SmartLink.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" id="btnLogout" >Logout</a>
+                    <a class="btn btn-primary" id="btnLogout">Logout</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    
+
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
 
     <!-- Core plugin JavaScript-->
-    
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+
     <script src="https://unpkg.com/@zxing/library@latest"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <!-- Firebase setup -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
         import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
-        import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+        import { getFirestore, doc, getDoc, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+        import { getDatabase, ref, push, set, get, onValue } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
         const firebaseConfig = {
             apiKey: "AIzaSyALFEuoRLHCysli6QyB4lSS0qBZf6tKg3Y",
             authDomain: "aplikasi-iot-c68b3.firebaseapp.com",
@@ -509,11 +627,15 @@
             storageBucket: "aplikasi-iot-c68b3.appspot.com",
             messagingSenderId: "1009986462340",
             appId: "1:1009986462340:web:258adb8357c62d9eb7d8d1",
-            measurementId: "G-PD16QKDNNX"
+            measurementId: "G-PD16QKDNNX",
+            databaseURL: "https://aplikasi-iot-c68b3-default-rtdb.asia-southeast1.firebasedatabase.app/"
         };
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
         const db = getFirestore(app);
+        const dbRealTime = getDatabase(app);
+
+
         // Cek apakah user sedang login
         onAuthStateChanged(auth, async (user) => {
             if (user) {
@@ -532,7 +654,7 @@
             }
         });
 
-        // **✅ Fungsi Logout**
+        // ** Fungsi Logout**
         document.getElementById("btnLogout").addEventListener("click", async function () {
             try {
                 await signOut(auth);
@@ -542,71 +664,828 @@
                 console.error("Error saat logout:", error.message);
             }
         });
-        // **✅ Cek Status Login User**
+        // ** Cek Status Login User**
         onAuthStateChanged(auth, async (user) => {
             if (!user) {
                 window.location.href = "login.html"; // Redirect jika tidak login
             }
         });
 
+        function cekOTP() {
+            console.log("Fungsi verifyOTP berhasil dipanggil!");
+        }
 
 
-        
-        let stream; // Menyimpan stream kamera
-            const videoElement = document.getElementById("scanner");
-            const cameraSelect = document.getElementById("cameraSelect");
+        let stream = null;
+        let scanner = new ZXing.BrowserMultiFormatReader();
+        let videoElement = document.getElementById("scanner");
+        let cameraSelect = document.getElementById("cameraSelect");
+        let resultText = document.getElementById("result");
+        let restartButton = document.getElementById("restartScan");
 
-            // **1️⃣ Fungsi: Ambil daftar kamera yang tersedia**
-            async function getCameras() {
-                try {
-                    const devices = await navigator.mediaDevices.enumerateDevices();
-                    const videoDevices = devices.filter(device => device.kind === "videoinput");
 
-                    cameraSelect.innerHTML = ""; // Kosongkan daftar sebelum ditambahkan ulang
 
-                    videoDevices.forEach((device, index) => {
-                        const option = document.createElement("option");
-                        option.value = device.deviceId;
-                        option.text = device.label || `Kamera ${index + 1}`;
-                        cameraSelect.appendChild(option);
-                    });
-                } catch (error) {
-                    console.error("Gagal mendapatkan daftar kamera:", error);
+        async function getCameras() {
+            try {
+                const devices = await navigator.mediaDevices.enumerateDevices();
+                const videoDevices = devices.filter(device => device.kind === "videoinput");
+
+                cameraSelect.innerHTML = "";
+                videoDevices.forEach((device, index) => {
+                    const option = document.createElement("option");
+                    option.value = device.deviceId;
+                    option.text = device.label || `Kamera ${index + 1}`;
+                    cameraSelect.appendChild(option);
+                });
+
+                if (videoDevices.length > 0) {
+                    cameraSelect.selectedIndex = 0;
+                    await startCamera();
                 }
+            } catch (error) {
+                console.error("Gagal mendapatkan daftar kamera:", error);
             }
+        }
 
-            // **2️⃣ Fungsi: Mulai Kamera sesuai Pilihan**
-            async function startCamera() {
-                stopCamera(); // Pastikan kamera sebelumnya dimatikan
-
-                const selectedDeviceId = cameraSelect.value; // Ambil ID kamera yang dipilih
+        async function startCamera() {
+                await stopCamera(); // Hentikan kamera sebelum memulai ulang
+                resultText.textContent = "Mencari barcode...";
 
                 try {
                     const constraints = {
-                        video: { deviceId: selectedDeviceId ? { exact: selectedDeviceId } : undefined }
+                        video: { deviceId: cameraSelect.value ? { exact: cameraSelect.value } : undefined }
                     };
 
                     stream = await navigator.mediaDevices.getUserMedia(constraints);
                     videoElement.srcObject = stream;
+
+                    scanner.decodeFromVideoDevice(cameraSelect.value, videoElement, async (result, err) => {
+                        if (result) {
+                            
+                            await stopCamera();
+
+                            const scannedBarcode = result.text.trim(); // Hasil scan
+                            console.log("Hasil scan:", JSON.stringify(scannedBarcode)); // tambahkan ini
+
+
+                            // **Pisahkan QR Code menjadi produk_id, ssid, dan password**
+                            const qrParts = scannedBarcode.split(",");
+                            if (qrParts.length !== 3) {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Format QR Code Salah",
+                                    text: "Pastikan QR Code memiliki format: ProdukID, SSID, Password",
+                                    confirmButtonText: "OK"
+                                });
+                                return;
+                            }
+
+                            const produkID = qrParts[0].trim();
+                            const ssid = qrParts[1].trim();
+                            const password = qrParts[2].trim();
+
+                            try {
+                                // **Ambil semua perangkat dari koleksi produk_key**
+                                const perangkatRef = collection(db, "produk_key");
+                                const perangkatSnap = await getDocs(perangkatRef);
+
+                                let barcodeTerdaftar = false;
+
+                                perangkatSnap.forEach((doc) => {
+                                    const data = doc.data();
+
+                                    if (produkID in data) {
+                                        barcodeTerdaftar = true;
+                                        
+                                    }
+                                });
+
+                                
+                                const pemilikRef = ref(dbRealTime, `perangkat/${produkID}/pemilik_uid`);
+
+                                // **Cek pemilik_uid di Realtime Database**
+                                const pemilikSnap = await get(pemilikRef);
+                                let pemilikUID = pemilikSnap.exists() ? pemilikSnap.val() : null;
+
+                                if (pemilikUID) {
+                                    Swal.fire({
+                                        icon: "warning",
+                                        title: "Perangkat Sudah Digunakan",
+                                        text: "Perangkat ini sudah terdaftar oleh pengguna lain.",
+                                        confirmButtonText: "OK"
+                                    });
+                                    return;
+                                }
+
+                                if (barcodeTerdaftar) {                    
+
+                                    console.log("Perangkat terdaftar:", scannedBarcode);
+
+                                    // Simpan produk_key ke localStorage sebelum OTP dikirim
+                                    localStorage.setItem("produk_key", produkID);
+                                    localStorage.setItem("ssid", ssid);
+                                    localStorage.setItem("password", password);
+
+                                    // **Tampilkan SSID dan Password ke user**
+                                    document.getElementById("ssidDisplay").textContent = `SSID: ${ssid}`;
+                                    document.getElementById("passwordDisplay").textContent = `Password: ${password}`;
+
+
+                                    // **Ambil email user dari Firestore**
+                                    const user = auth.currentUser;
+                                    if (user) {
+                                        const userRef = doc(db, "users", user.uid);
+                                        const userSnap = await getDoc(userRef);
+
+                                        if (userSnap.exists()) {
+                                            const userData = userSnap.data();
+                                            const userEmail = userData.email;
+
+                                            if (userEmail) {
+                                                sendOTPEmail(userEmail); // Kirim OTP ke email user
+
+                                                // **Tutup modal scanner sebelum buka modal OTP**
+                                                var scannerModal = bootstrap.Modal.getInstance(document.getElementById("staticBackdrop"));
+                                                if (scannerModal) {
+                                                    scannerModal.hide();
+                                                }
+
+                                    
+
+                                                // **Gunakan event listener untuk menunggu modal scanner tertutup sebelum membuka modal OTP**
+                                                scannerModal._element.addEventListener('hidden.bs.modal', function () {
+                                                    // Setelah modal scanner tertutup, buka modal OTP
+                                                    var otpModal = new bootstrap.Modal(document.getElementById("otpModal"));
+                                                    otpModal.show();
+
+                                                    
+                                                });
+                                            } else {
+                                                console.warn("Email tidak ditemukan di Firestore.");
+                                            }
+
+                                        } else {
+                                            console.warn("Data user tidak ditemukan di Firestore.");
+                                        }
+                                    }
+
+                                } else {
+                                    console.warn("Perangkat tidak ditemukan:", produkID);
+                                    Swal.fire({
+                                        icon: "error",
+                                        title: "Perangkat Tidak Terdaftar",
+                                        text: "Produk ID tidak ditemukan dalam sistem.",
+                                        confirmButtonText: "OK"
+                                    });
+                                }
+                            } catch (error) {
+                                console.error("Error validasi barcode:", error);
+                            }
+                        }
+                    });
                 } catch (error) {
                     console.error("Error membuka kamera:", error);
                 }
             }
 
-            // **3️⃣ Fungsi: Matikan Kamera**
-            function stopCamera() {
-                if (stream) {
-                    stream.getTracks().forEach(track => track.stop());
+
+
+
+
+        async function stopCamera() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+                scanner.reset(); // Hentikan scanning ZXing
+            }
+            videoElement.srcObject = null;
+        }
+
+        restartButton.addEventListener("click", () => {
+            resultText.textContent = "Mencari barcode...";
+            startCamera();
+        });
+
+        cameraSelect.addEventListener("change", startCamera);
+        document.getElementById("staticBackdrop").addEventListener("shown.bs.modal", getCameras);
+        document.getElementById("staticBackdrop").addEventListener("hidden.bs.modal", stopCamera);
+
+        async function sendOTPEmail(userEmail) {
+            const otp = Math.floor(100000 + Math.random() * 900000); // Generate kode OTP 6 digit
+            const expirationTime = new Date(Date.now() + 1 * 60 * 1000).toLocaleTimeString(); // Waktu sekarang + 1 menit
+
+            localStorage.setItem("otp_code", otp); // Simpan OTP di localStorage
+            localStorage.setItem("otp_expiration", expirationTime); // Simpan waktu kadaluarsa
+
+            const templateParams = {
+                to_email: userEmail,
+                otp_code: otp,
+                expiration_time: expirationTime,
+                company_name: "Smart Link" // Ganti dengan nama perusahaan Anda
+            };
+
+            emailjs.init("21hmI31Rb2f7rq8rT"); // Ganti dengan EmailJS User ID
+
+            emailjs.send("service_p7dq4bw", "template_37m9xf8", templateParams)
+                .then(response => {
+                    console.log("OTP berhasil dikirim!", response.status, response.text);
+                })
+                .catch(error => {
+                    console.error("Gagal mengirim OTP:", error);
+                });
+        }
+
+        let otpModal;
+        let otpTimer;
+        let timeLeft = 60;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            otpModal = new bootstrap.Modal(document.getElementById("otpModal"), {
+                backdrop: "static",
+                keyboard: false
+            });
+
+            // Fungsi untuk menampilkan modal setelah barcode berhasil dipindai
+            window.showOTPModal = function () {
+                otpModal.show();
+            };
+
+            // Memulai timer setelah modal benar-benar muncul
+            document.getElementById("otpModal").addEventListener("shown.bs.modal", function () {
+                startOTPTimer();
+
+            });
+
+            // Fungsi untuk menutup modal secara manual
+            window.closeOTPModal = function () {
+                otpModal.hide();
+            };
+
+
+
+
+            // Fungsi untuk memulai timer OTP
+            function startOTPTimer() {
+                // Panggil startOTPTimer saat modal OTP muncul
+                document.getElementById("otpModal").addEventListener("shown.bs.modal", startOTPTimer);
+                timeLeft = 60; // Reset waktu
+                clearInterval(otpTimer); // Hentikan timer sebelumnya jika ada
+
+                let timerText = document.getElementById("timerText");
+                let otpExpiredMessage = document.getElementById("otpExpiredMessage");
+                let resendButton = document.getElementById("resendButton");
+
+                if (!timerText || !otpExpiredMessage || !resendButton) {
+                    console.error("Elemen timer tidak ditemukan");
+                    return;
                 }
-                videoElement.srcObject = null;
+
+                timerText.innerText = `Sisa waktu: ${timeLeft} detik`;
+                otpExpiredMessage.style.display = "none";
+                resendButton.style.display = "none";
+
+                otpTimer = setInterval(() => {
+                    timeLeft--;
+                    timerText.innerText = `Sisa waktu: ${timeLeft} detik`;
+
+                    if (timeLeft <= 0) {
+                        clearInterval(otpTimer);
+                        otpExpiredMessage.style.display = "block";
+                        resendButton.style.display = "block";
+                    }
+                }, 1000);
             }
 
-            // **4️⃣ Panggil fungsi saat halaman dibuka**
-            getCameras();
+
+
+            // Fungsi untuk mengirim ulang OTP
+            window.resendOTP = function () {
+                const user = auth.currentUser;
+                if (!user) {
+                    console.error("User belum login atau auth.currentUser null");
+                    return;
+                }
+                console.log("User ditemukan:", user.uid);
+
+                const userRef = doc(db, "users", user.uid);
+                getDoc(userRef).then(userSnap => {
+                    if (userSnap.exists()) {
+                        const userEmail = userSnap.data().email;
+                        console.log("Email pengguna:", userEmail);
+
+                        if (userEmail) {
+                            sendOTPEmail(userEmail); // Kirim OTP baru ke email
+                            startOTPTimer(); // Restart timer
+                            otpModal.show(); // Tampilkan kembali modal
+                        } else {
+                            console.error("Email tidak ditemukan di database");
+                        }
+                    } else {
+                        console.error("Data pengguna tidak ditemukan di Firestore");
+                    }
+                }).catch(error => {
+                    console.error("Gagal mendapatkan data pengguna:", error);
+                });
+            };
+        });
+
+
+
+        // Input key manual
+        document.addEventListener("DOMContentLoaded", function () {
+            // Tambahkan event listener ke tombol "Kirim"
+            document.getElementById("btnKirimProdukKey").addEventListener("click", async function () {
+                const inputProdukKey = document.getElementById("inputProdukKey").value.trim();
+
+                if (!inputProdukKey) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "Produk Key Kosong",
+                        text: "Silakan masukkan produk key terlebih dahulu.",
+                        confirmButtonText: "OK"
+                    });
+                    return;
+                }
+
+                try {
+                    // **Ambil semua perangkat dari koleksi produk_key**
+                    const perangkatRef = collection(db, "produk_key");
+                    const perangkatSnap = await getDocs(perangkatRef);
+
+                    let produkKeyTerdaftar = false;
+
+                    perangkatSnap.forEach((doc) => {
+                        const data = doc.data();
+
+                        // **Cek apakah produk key ada sebagai field dalam dokumen**
+                        if (inputProdukKey in data) {
+                            produkKeyTerdaftar = true;
+                        }
+                    });
+
+                    if (produkKeyTerdaftar) {
+                        console.log("Produk key terdaftar:", inputProdukKey);
+
+                        // Simpan produk_key ke localStorage sebelum OTP dikirim
+                        localStorage.setItem("produk_key", inputProdukKey);
+
+                        // **Ambil email user dari Firestore**
+                        const user = auth.currentUser;
+                        if (user) {
+                            const userRef = doc(db, "users", user.uid);
+                            const userSnap = await getDoc(userRef);
+
+                            if (userSnap.exists()) {
+                                const userData = userSnap.data();
+                                const userEmail = userData.email;
+
+                                if (userEmail) {
+                                    sendOTPEmail(userEmail); // Kirim OTP ke email user
+
+                                    // **Tutup modal input manual sebelum buka modal OTP**
+                                    var manualModal = bootstrap.Modal.getInstance(document.getElementById("staticBackdrop2"));
+                                    if (manualModal) {
+                                        manualModal.hide();
+                                    }
+
+                                    // **Tampilkan loading spinner sementara modal input tertutup dan modal OTP dibuka**
+                                    var loading = document.getElementById("loading");
+                                    loading.classList.remove("d-none");
+
+                                    // **Gunakan event listener untuk menunggu modal tertutup sebelum membuka modal OTP**
+                                    manualModal._element.addEventListener('hidden.bs.modal', function () {
+                                        // Setelah modal input manual tertutup, buka modal OTP
+                                        var otpModal = new bootstrap.Modal(document.getElementById("otpModal"));
+                                        otpModal.show();
+
+                                        // Sembunyikan loading spinner setelah modal OTP ditampilkan
+                                        loading.classList.add("d-none");
+                                    });
+                                } else {
+                                    console.warn("Email tidak ditemukan di Firestore.");
+                                }
+
+                            } else {
+                                console.warn("Data user tidak ditemukan di Firestore.");
+                            }
+                        }
+                    } else {
+                        console.warn("Produk key tidak ditemukan:", inputProdukKey);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Produk Key Tidak Terdaftar",
+                            text: "Produk key yang dimasukkan tidak ditemukan dalam sistem.",
+                            confirmButtonText: "OK"
+                        }); // **Tampilkan peringatan jika produk key tidak ada**
+                    }
+                } catch (error) {
+                    console.error("Error validasi produk key:", error);
+                }
+            });
+        });
     </script>
 
-    
+    <script type="module">
+        import { getDatabase, ref, query, orderByChild, equalTo, onValue, update, set } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+        
 
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("otpButton").addEventListener("click", cekOTP);
+
+            // Pastikan user sudah login sebelum menampilkan data
+            const auth = getAuth();
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    let uid = user.uid;
+                    localStorage.setItem("pemilik_uid", uid); // Simpan ke localStorage
+                    tampilkanDataPerPemilik(uid); // Panggil fungsi untuk menampilkan data
+                } else {
+                    console.warn("User belum login.");
+                }
+            });
+        });
+
+        async function cekOTP() {
+                let inputOTP = document.getElementById("otpInput").value;
+                let storedOTP = localStorage.getItem("otp_code");
+
+                if (!inputOTP) {
+                    Swal.fire({
+                        icon: "warning",
+                        title: "OTP Kosong",
+                        text: "Masukkan kode OTP yang telah dikirim ke email Anda!",
+                        confirmButtonText: "OK"
+                    });
+                    return;
+                }
+
+                if (inputOTP === storedOTP) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "OTP Valid!",
+                        text: "Verifikasi berhasil. Anda dapat melanjutkan.",
+                        confirmButtonText: "OK"
+                    }).then(async () => {
+                        localStorage.setItem("isLoggedIn", "true");
+                        localStorage.removeItem("otp_code");
+
+                        const auth = getAuth();
+                        const user = auth.currentUser;
+
+                        if (user) {
+                            let uid = user.uid;
+                            console.log("UID Pengguna:", uid);
+                            localStorage.setItem("pemilik_uid", uid);
+
+                            const db = getDatabase();
+                            const userRef = ref(db, `users/${uid}`);
+                            await set(userRef, { uid: uid, email: user.email });
+
+                            let produkKey = localStorage.getItem("produk_key");
+                            if (produkKey) {
+                                console.log("Menghubungkan UID dengan perangkat:", produkKey);
+                                const perangkatRef = ref(db, `perangkat/${produkKey}`);
+                                await update(perangkatRef, { pemilik_uid: uid });
+
+                                tampilkanDataPerPemilik(uid);
+
+                                // **Tutup modal OTP sebelum menampilkan modal SSID**
+                                var otpModal = bootstrap.Modal.getInstance(document.getElementById("otpModal"));
+                                otpModal.hide();
+
+                                // **Tampilkan modal SSID setelah verifikasi berhasil**
+                                document.getElementById("ssidDisplay").textContent = ` ${localStorage.getItem("ssid")}`;
+                                document.getElementById("passwordDisplay").textContent = ` ${localStorage.getItem("password")}`;
+
+                                var infoModal = new bootstrap.Modal(document.getElementById("infoModal"));
+                                infoModal.show();
+                            } else {
+                                console.warn("produk_key tidak ditemukan di localStorage.");
+                            }
+                        } else {
+                            console.warn("User belum login di Firebase Authentication.");
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "OTP Salah",
+                        text: "Kode OTP yang Anda masukkan salah. Coba lagi.",
+                        confirmButtonText: "OK"
+                    });
+                }
+            }
+
+    
+    // Fungsi untuk menampilkan data perangkat berdasarkan pemilik_uid
+    function tampilkanDataPerPemilik(uid) {
+        const db = getDatabase();
+        const perangkatRef = ref(db, "perangkat");
+        const container = document.getElementById("perangkatContainer");
+
+        onValue(perangkatRef, (snapshot) => {
+
+            if (snapshot.exists()) {
+                container.innerHTML = ""; // Kosongkan container sebelum menampilkan data baru
+
+
+                let perangkatAda = false;
+                snapshot.forEach(childSnapshot => {
+                    const data = childSnapshot.val();
+                    const perangkatId = childSnapshot.key; // ID perangkat
+
+                    // Filter data berdasarkan pemilik_uid yang sesuai
+                    if (data.pemilik_uid === uid) {
+                        perangkatAda = true;
+
+                        const card = document.createElement("div");
+                        card.classList.add("perangkat-card");
+                        card.setAttribute("data-id", perangkatId); // Tandai elemen dengan ID perangkat
+
+                        // Dapatkan kategori perangkat
+                        const kategori = data.kategori || "lainnya";
+                        const lastActive = data.last_active || 0; // Ambil last_active dari database
+                        const currentTime = Date.now(); // Waktu sekarang
+                        const selisih = currentTime - lastActive; // Selisih waktu
+
+                        // Tentukan status perangkat
+                        let statusPerangkat = "Offline ❌";
+                        if (selisih <= 15000) { // Jika aktif dalam 10 detik terakhir
+                            statusPerangkat = "Online ✅";
+                        }
+
+                        // Template berdasarkan kategori
+                        let content = `<h3>${data.nama || "Tidak ada nama"}</h3>`;
+
+                        switch (kategori.toLowerCase()) {
+                            case "smartcity":
+                                content += `
+                                                                    
+                                        <img src="img/smartcity/lampu_${data.lampu_status === 1 ? 'nyala' : 'mati'}.png" 
+                                        alt="Lampu ${data.lampu_status === 1 ? 'Nyala' : 'Mati'}" width="50%">
+
+                                        <!-- Switch Lampu -->
+                                        <div class="form-check form-switch lampu-container" id="lampuContainer-${perangkatId}" 
+                                            style="display: ${data.mode_kontrol === 'otomatis' ? 'none' : 'block'};">
+                                            <input class="form-check-input lampu-toggle" type="checkbox" role="switch"
+                                                id="lampuSwitch-${perangkatId}" ${data.lampu_status === 1 ? "checked" : ""} data-id="${perangkatId}">
+                                            <label class="form-check-label" for="lampuSwitch-${perangkatId}">
+                                                <span id="lampuLabel-${perangkatId}">${data.lampu_status === 1 ? "Menyala" : "Mati"}</span>
+                                            </label>
+                                        </div>
+
+                                        <!-- Tombol Mode Otomatis/Manual -->
+                                        <button class="btn btn-primary mode-toggle" data-id="${perangkatId}" data-mode="${data.mode_kontrol || 'manual'}">
+                                            Mode: <span id="modeLabel-${perangkatId}">${data.mode_kontrol === "otomatis" ? "Otomatis" : "Manual"}</span>
+                                        </button>`;
+                                break;
+                            
+                            case "smarthealtcare":
+                                content += `
+                                <p><strong>Suhu:</strong> ${data.sensor || "Tidak ada jenis"}</p>`;
+                                if (data.sensor < 32) {
+                                    content += `
+                                    <img src="img/smarthealcare/sedang_sehat.svg" alt="">
+                                    <p><strong>Status:</strong> Sehat</p>    
+                                    `;
+                                } else {
+                                    content += `
+                                    <img src="img/smarthealcare/sedang_demam.svg" alt="">
+                                    <p><strong>Status:</strong> Demam</p>
+                                    `;
+                                };
+                                break;
+                                
+                            case "smarthome":
+                                content += `
+                                
+                                `;
+                                if (data.sensor_kelembapan < 30) {
+                                    content += `
+                                    <div class="container">
+                                        <div class="air" id="air"></div>
+                                        <img src="img/siramTanaman_tidak_aktif.svg" alt="Tanaman" class="tanaman" id="tanaman">
+                                    </div>
+                                    <p><strong>Tanaman:</strong> Kering</p>
+                                    `;
+                                } else {
+                                    content += `
+                                    <div class="container">
+                                        <img src="img/siramTanaman_aktif.svg" width="100px" alt="Tanaman" class="tanaman_tidak_aktif">
+                                    </div>
+                                    <p><strong>Tanaman:</strong> Basah</p>
+                                    `;
+                                };
+                                
+                                break;
+
+                            case "smartagriculture":
+                                content += `
+                                <p><strong>Suhu:</strong> ${data.suhu || "Tidak ada data"}</p>
+                                <p><strong>pH:</strong> ${data.ph || "Tidak ada data"}</p>
+
+                                <img src="img/smartagri/${data.status === 1 ? 'buka' : 'tutup'}_pakan.png" 
+                                    alt="Servo ${data.status === 1 ? 'Buka' : 'Tutup'}" width="50%">
+
+                                <!-- Switch Servo -->
+                                <div class="form-check form-switch servo-container" id="servoContainer-${perangkatId}" 
+                                    style="display: ${data.mode_kontrol === 'otomatis' ? 'none' : 'block'};">
+                                    <input class="form-check-input servo-toggle" type="checkbox" role="switch"
+                                        id="servoSwitch-${perangkatId}" ${data.status === 1 ? "checked" : ""} data-id="${perangkatId}">
+                                    <label class="form-check-label" for="servoSwitch-${perangkatId}">
+                                        <span id="servoLabel-${perangkatId}">${data.status === 1 ? "Buka" : "Tutup"}</span>
+                                    </label>
+                                </div>
+
+                                <!-- Tombol Mode Otomatis/Manual -->
+                                <button class="btn btn-primary mode-toggle-servo" data-id="${perangkatId}" data-mode="${data.mode_kontrol || 'manual'}">
+                                    Mode: <span id="modeLabel-${perangkatId}">${data.mode_kontrol === "otomatis" ? "Otomatis" : "Manual"}</span>
+                                </button>`;
+                                break;
+
+
+                            default:
+                                Object.keys(data).forEach(key => {
+                                    if (key !== "pemilik_uid") {
+                                        content += `<p><strong>${key}:</strong> ${data[key] || "Tidak ada data"}</p>`;
+                                    }
+                                });
+                                break;
+                        }
+
+                        // Status perangkat
+                        content += `<p class="statusPerangkat">Status: <span>${statusPerangkat}</span></p>`;
+
+                        // Tombol hapus pemilik UID
+                        content += `<button class="hapus-btn btn btn-danger" data-id="${perangkatId}">Hapus Perangkat</button>`;
+
+                        card.innerHTML = content;
+                        container.appendChild(card);
+                    }
+                });
+
+                // Jika tidak ada perangkat dengan pemilik_uid yang sesuai
+                if (!perangkatAda) {
+                    container.innerHTML = "<p>Tidak ada perangkat, silakan hubungkan perangkat SmartLink Anda.</p>";
+                }
+                tambahkanEventListener();
+
+                // Event listener untuk tombol hapus
+                document.querySelectorAll(".hapus-btn").forEach(button => {
+                    button.addEventListener("click", function () {
+                        const perangkatId = button.getAttribute("data-id");
+                        hapusPemilikUID(perangkatId);
+                    });
+                });
+            } else {
+                console.log("Database kosong.");
+                document.getElementById("perangkatContainer").innerHTML = "<p>Database kosong.</p>";
+            }
+        }, (error) => {
+            console.error("Terjadi kesalahan saat mengambil data:", error);
+        });
+    }    
+
+    // Fungsi untuk menambahkan event listener ke elemen yang dibuat secara dinamis
+    function tambahkanEventListener() {
+        document.querySelectorAll(".lampu-toggle").forEach(switchLampu => {
+            switchLampu.addEventListener("change", function () {
+                const db = getDatabase();
+                const perangkatId = this.getAttribute("data-id");
+                const statusLampu = this.checked ? 1 : 0;
+                const lampuRef = ref(db, `perangkat/${perangkatId}/lampu_status`);
+
+                set(lampuRef, statusLampu)
+                    .then(() => {
+                        console.log(`💡 [${perangkatId}] Lampu status diperbarui: ${statusLampu}`);
+                        document.getElementById(`lampuLabel-${perangkatId}`).textContent = statusLampu === 1 ? "Menyala" : "Mati";
+                    })
+                    .catch(error => console.error(`❌ [${perangkatId}] Gagal memperbarui lampu_status:`, error));
+            });
+        });
+
+        document.querySelectorAll(".mode-toggle").forEach(button => {
+            button.addEventListener("click", function () {
+                const db = getDatabase();
+                const perangkatId = this.getAttribute("data-id");
+                let modeSekarang = this.getAttribute("data-mode");
+                let modeBaru = modeSekarang === "otomatis" ? "manual" : "otomatis";
+                const modeRef = ref(db, `perangkat/${perangkatId}/mode_kontrol`);
+
+                set(modeRef, modeBaru)
+                    .then(() => {
+                        console.log(`🔄 [${perangkatId}] Mode kontrol diperbarui: ${modeBaru}`);
+                        document.getElementById(`modeLabel-${perangkatId}`).textContent = modeBaru.charAt(0).toUpperCase() + modeBaru.slice(1);
+                        this.setAttribute("data-mode", modeBaru);
+
+                        // Sembunyikan atau tampilkan switch lampu
+                        const lampuContainer = document.getElementById(`lampuContainer-${perangkatId}`);
+                        if (lampuContainer) {
+                            lampuContainer.style.display = (modeBaru === "otomatis") ? "none" : "block";
+                        }
+                    })
+                    .catch(error => console.error(`❌ [${perangkatId}] Gagal memperbarui mode_kontrol:`, error));
+            });
+        });
+
+
+        document.querySelectorAll(".servo-toggle").forEach(bukaServo => {
+            bukaServo.addEventListener("change", function () {
+                const db = getDatabase();
+                const perangkatId = this.getAttribute("data-id");
+                const statusServo = this.checked ? 1 : 0;
+                const servoRef = ref(db, `perangkat/${perangkatId}/status`);
+
+                set(servoRef, statusServo)
+                    .then(() => {
+                        console.log(`💡 [${perangkatId}] Servo status diperbarui: ${statusServo}`);
+                        document.getElementById(`servoLabel-${perangkatId}`).textContent = statusServo === 1 ? "Buka" : "Tutup";
+                    })
+                    .catch(error => console.error(`❌ [${perangkatId}] Gagal memperbarui Servo_status:`, error));
+            });
+        });
+
+        document.querySelectorAll(".mode-toggle-servo").forEach(button => {
+            button.addEventListener("click", function () {
+                const db = getDatabase();
+                const perangkatId = this.getAttribute("data-id");
+                let modeSekarang = this.getAttribute("data-mode");
+                let modeBaru = modeSekarang === "otomatis" ? "manual" : "otomatis";
+                const modeRef = ref(db, `perangkat/${perangkatId}/mode_kontrol`);
+
+                set(modeRef, modeBaru)
+                    .then(() => {
+                        console.log(`🔄 [${perangkatId}] Mode kontrol diperbarui: ${modeBaru}`);
+                        document.getElementById(`modeLabel-${perangkatId}`).textContent = modeBaru.charAt(0).toUpperCase() + modeBaru.slice(1);
+                        this.setAttribute("data-mode", modeBaru);
+
+                        // Sembunyikan atau tampilkan switch lampu
+                        const lampuContainer = document.getElementById(`lampuContainer-${perangkatId}`);
+                        if (lampuContainer) {
+                            lampuContainer.style.display = (modeBaru === "otomatis") ? "none" : "block";
+                        }
+                    })
+                    .catch(error => console.error(`❌ [${perangkatId}] Gagal memperbarui mode_kontrol:`, error));
+            });
+        });
+
+
+    }
+
+
+    // Fungsi untuk menghapus pemilik_uid dari data perangkat berdasarkan ID
+    function hapusPemilikUID(perangkatId) {
+        const db = getDatabase();
+        const perangkatRef = ref(db, `perangkat/${perangkatId}`);
+
+        // Menghapus hanya field pemilik_uid
+        update(perangkatRef, {
+            pemilik_uid: null
+        })
+            .then(() => {
+                console.log("pemilik_uid berhasil dihapus");
+
+                window.location.href = "index.html"
+            })
+            .catch((error) => {
+                console.error("Terjadi kesalahan saat menghapus pemilik_uid:", error);
+            });
+    }
+
+    function showLoading() {
+            const loadingSpinner = document.getElementById("loading-spinner");
+            console.log("showLoading called, element found?", loadingSpinner);
+            if (loadingSpinner) {
+                loadingSpinner.style.display = "block";
+            }
+        }
+    function hideLoading() {
+        setTimeout(() => {
+            const loadingSpinner = document.getElementById("loading-spinner");
+            console.log("hideLoading called, element found?", loadingSpinner);
+            if (loadingSpinner) {
+                loadingSpinner.style.display = "none";
+            }
+        }, 100); // Tunggu sedikit sebelum eksekusi
+    }
+
+
+
+    // **Saat halaman dimuat, ambil UID dari localStorage dan tampilkan data**
+    document.addEventListener("DOMContentLoaded", () => {
+        showLoading();
+        const savedUid = localStorage.getItem("pemilik_uid");
+        if (savedUid) {
+            
+            setInterval(() => {
+                tampilkanDataPerPemilik(savedUid);
+            }, 2000);
+        } 
+    });
+
+
+    </script>
 
 </body>
 
